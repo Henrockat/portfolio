@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body {
+    box-sizing: border-box;
+    background-image: image(); /* Voeg hier je afbeelding URL in */
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    color: #113743;
+    height: 100%;
+    width: 100%;
+}
+
+/* Reset voor alle elementen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+/* Ensure sections have proper spacing */
+#Homeintro article h2 {
+    margin-bottom: 1rem; /* Adds spacing between <h2> elements */
+}
+
+/* Align buttons properly */
+section .row {
+    gap: 1rem; /* Adds spacing between buttons */
+    justify-content: start; /* Aligns buttons to the left */
+}
+
+/* Make buttons responsive */
+button {
+    min-width: 150px; /* Ensures buttons are large enough */
+}
+
+/* Header styling */
+header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 15%; /* Dynamic padding for responsiveness */
+    background-color: transparent;
+    font-size: x-large;
+    text-align: left;
+}
+
+/* Navbar styling */
+a, a:hover {
+    text-decoration: none;
+    color: #587e8c;
+}
+
+.blauwgrijs {
+    color: #587e8c;
+}
+
+.span {
+    color: red;
+}
+
+/* Button primary color customization */
+.btn-primary {
+    --bs-btn-color: #113743;
+    --bs-btn-bg: #587e8c;
+}
+
+/* Flexibly adjusting the header and container on smaller screens */
+@media (max-width: 1200px) {
+    header {
+        padding: 1rem 10%; /* Less padding for medium screens */
+    }
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        padding: 1rem 5%; /* Less padding for tablets */
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 3%; /* Less padding for mobile */
+    }
+    .container {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 1rem 2%; /* Even less padding for very small screens */
+    }
+    .container {
+        padding: 5px;
+    }
+}
