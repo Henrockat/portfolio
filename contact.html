@@ -16,7 +16,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
   <!-- eigen geschreven css voor jouw html-bestand -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/stylecontact.css">
 </head>
 
 <body class="p-3 m-0 border-0 bd-example">
@@ -46,129 +46,46 @@
     </div>
   </nav>
 
-  <header class="row m-5">
-    <h1 class="col display-3 blauwgrijs text-center">may the power<br>be with you</h1>
-  </header>
-
-  <div class="container">
-    <div class="row">
-      <main class="col-md-9 pe-3">
-        <section id="contact" class="row">
-          <div class="col-12 mb-3">
-            <h2 class="text-uppercase fs-5 fw-bolder pt-3">contact</h2>
-            <p>Vul het registratieformulier in.<br>Velden met een <span>*</span> zijn verplicht.</p>
-          </div>
-          <hr>
-
-          <form action="#" method="post">
-            <fieldset class="row g-3 mb-3">
-              <legend class="text-uppercase fs-6 fw-bolder pt-3">gegevens</legend>
-              <div class="col-md-6">
-                <label for="firstName" class="form-label">voornaam <span>*</span></label>
-                <input type="text" class="form-control" id="firstName" required>
-              </div>
-              <div class="col-md-6">
-                <label for="lastName" class="form-label">achternaam <span>*</span></label>
-                <input type="text" class="form-control" id="lastName" required>
-              </div>
-              <div class="col">
-                <label for="mobile" class="form-label">mobiel</label>
-                <input type="tel" class="form-control" id="mobile" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
-                  placeholder="0412 34 56 78">
-              </div>
-              <div class="col">
-                <label for="birthDate" class="form-label">geboortedatum</label>
-                <input type="date" class="form-control" id="birthDate">
-              </div>
-            </fieldset>
-
-            <fieldset class="row g-3 mb-3 mt-3">
-              <legend class="text-uppercase fs-6 fw-bolder pt-3">accountgegevens</legend>
-              <div class="col-12">
-                <label for="mail" class="form-label">e-mail <span>*</span></label>
-                <input type="email" class="form-control" id="mail" required>
-              </div>
-              <div class="col-md-6">
-                <label for="password1" class="form-label">paswoord <span>*</span></label>
-                <input type="password" class="form-control" id="password1"
-                  placeholder="min 8 karakters,1 cijfer, 1 hoofdletter" required>
-              </div>
-              <div class="col-md-6">
-                <label for="password2" class="form-label">bevestig paswoord <span>*</span></label>
-                <input type="password" class="form-control" id="password2" required>
-              </div>
-            </fieldset>
-
-            <fieldset class="row g-3 mb-3 mt-3">
-              <legend class="text-uppercase fs-6 fw-bolder pt-3">adresgegevens</legend>
-              <div class="col-12">
-                <label for="address" class="form-label">adres <span>*</span></label>
-                <input type="text" class="form-control" id="address" required>
-              </div>
-              <div class="col-6 col-md-3">
-                <label for="postalcode" class="form-label">postcode <span>*</span></label>
-                <input type="text" class="form-control" id="postalcode" required>
-              </div>
-              <div class="col-6 col-md-5">
-                <label for="city" class="form-label">stad <span>*</span></label>
-                <input type="text" class="form-control" id="city" required>
-              </div>
-              <div class="col-md-4">
-                <label for="countryCode" class="form-label">kies een land <span>*</span></label>
-                <select id="countryCode" class="form-select">
-                  <option value="BE" selected>België</option>
-                  <option value="DE">Duitsland</option>
-                  <option value="FR">Frankrijk</option>
-                  <option value="LU">Luxemburg</option>
-                  <option value="NL">Nederland</option>
-                  <option value="UK">Verenigd Koninkrijk</option>
-                </select>
-              </div>
-            </fieldset>
-
-            </fieldset>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">verzenden</button>
-            </div>
-          </form>
-
-        </section>
-      </main>
-
-      <aside class="col-md-3 border-start ps-5">
-        <h2 class="text-uppercase fs-5 fw-bolder pt-3">contact</h2>
-        <p>POWER web<br>
-          <a href="mailto:powerweb@ap.be">powerweb@ap.be</a><br>
-          +32 45 67 89
+  
+  <section class="contact-section">
+      <main class="contact-intro">
+        <h2 class="contact-title">Get in Touch</h2>
+        <p class="contact-description">
+          Fill out the form below and we'll get back to you as soon as possible.
         </p>
-        <ul class="list-inline socials">
-          <li class="list-inline-item">
-            <a href="https://www.youtube.com" target="_blank">
-              <i class="bi bi-youtube blauwgrijs fs-6"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://www.instagram.com" target="_blank">
-              <i class="bi bi-instagram blauwgrijs fs-6"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://www.facebook.com" target="_blank">
-              <i class="bi bi-facebook blauwgrijs fs-6"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://twitter.com/" target="_blank">
-              <i class="bi bi-twitter blauwgrijs fs-6"></i>
-            </a>
-          </li>
-        </ul>
-      </aside>
+      </main>
+    
+      <form class="contact-form" action="" method="POST">
+    
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
+        <input type="hidden" name="from_name" value="My Website" />
+  
+    
+        <fieldset class="form-group-container">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" name="name" class="form-input" placeholder="Your name" type="text" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" class="form-input" placeholder="Your email" type="email" />
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone</label>
+            <input id="phone" name="phone" class="form-input" placeholder="+1 (234) 56789" type="text" />
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Your message"></textarea>
+          </div>
+        </fieldset>
+        <button class="form-submit" type="submit">Send Message</button>
+      </form>
+    
+  </section>
 
-    </div>
-  </div>
-
-  <footer class="container-fluid bg-light text-center h6 small p-4">&copy; jaartal POWER web enzo</footer>
+  <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
 </body>
 
 </html>
