@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl-BE">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>contact</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
   <!-- resetten van browsers -->
   <link rel="stylesheet" href="css/reset.css">
   <!-- Bootstrap CSS -->
@@ -30,62 +30,88 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link  fs-5" href="index.html">Home</a>
+          <a class="nav-link fs-5"href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fs-5" href="portfolio.html">Portfolio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fs-5" aria-current="page"  href="contact.html">Contact</a>
+          <a class="nav-link active fs-5" aria-current="page" href="contact.html">Contact</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex me-3" role="search">
         <input class="form-control me-2" type="search" placeholder="zoeken" aria-label="Search">
         <button class="btn btn-sm btn-outline-secondary" type="submit">zoeken</button>
       </form>
     </div>
   </nav>
 
-  
-  <section class="contact-section">
-      <main class="contact-intro">
+
+<main class="container my-5">
+    
+  <section class="row">
+
+    <!-- Text Section -->
+    <section class="col-lg-8">
+
+      <article class="mb-5">
+        <h2 class="about-title">About</h2>
+        <p class="about-description">Over mijn passie voor technologie en innovatie</p>
+        <p class="about-description">
+            Mijn passie voor technologie en de werking van apparaten ontstond al op jonge leeftijd.
+            Van kleins af aan was ik geboeid door hoe dingen werken en hoe ik ze zelf kon herstellen of verbeteren.
+            Door de jaren heen groeide hieruit een hobby: afgedankte mechanische onderdelen en toestellen nieuw leven inblazen.
+        </p>
+      
+        <p class="about-description">
+          Vandaag werk ik graag aan projecten om mijn kennis verder te verruimen.
+          Daarbij probeer ik steeds nieuwe manieren te bedenken om IoT-apparaten in te zetten voor home automation of creatieve hobbyprojecten.
+        </p>
+
+      </article>
+
+      <article>
         <h2 class="contact-title">Get in Touch</h2>
         <p class="contact-description">
-          Fill out the form below and we'll get back to you as soon as possible.
+          Fill in the form below and I'll get back to you as soon as possible.
         </p>
-      </main>
-    
-      <form class="contact-form" action="" method="POST">
-    
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-        <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
-        <input type="hidden" name="from_name" value="My Website" />
-  
-    
-        <fieldset class="form-group-container">
-          <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input id="name" name="name" class="form-input" placeholder="Your name" type="text" />
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" class="form-input" placeholder="Your email" type="email" />
-          </div>
-          <div class="form-group">
-            <label for="phone" class="form-label">Phone</label>
-            <input id="phone" name="phone" class="form-input" placeholder="+1 (234) 56789" type="text" />
-          </div>
-          <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-textarea" id="message" name="message" placeholder="Your message"></textarea>
-          </div>
-        </fieldset>
-        <button class="form-submit" type="submit">Send Message</button>
-      </form>
-    
+
+        <form class="contact-form" action="" method="POST">
+          <fieldset class="form-group-container">
+            <label class="form-group">
+              <span class="form-label">Name</span>
+              <input id="name" name="name" class="form-input" type="text" placeholder="Your Name">
+            </label>
+
+            <label class="form-group">
+              <span class="form-label">Email</span>
+              <input id="email" name="email" class="form-input" type="email" placeholder="Your Email">
+            </label>
+
+            <label class="form-group">
+              <span class="form-label">Phone</span>
+              <input id="phone" name="phone" class="form-input" type="text" placeholder="Phone Number">
+            </label>
+
+            <label class="form-group">
+              <span class="form-label">Message</span>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Your Message"></textarea>
+            </label>
+          </fieldset>
+
+          <button class="form-submit" type="submit">Send Message</button>
+        </form>
+      </article>
+
+    </section>
+
+    <!-- Image Section -->
+    <aside class="col-lg-4 d-none d-lg-block">
+      <img class="about-image" src="assets/images/professionele-foto.jpg" alt="About Image">
+    </aside>
+
   </section>
 
-  <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
-</body>
-
+</main>
+<footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
 </html>

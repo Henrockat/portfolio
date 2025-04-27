@@ -2,7 +2,6 @@
 
 html, body {
     box-sizing: border-box;
-    background-image: image(); /* Voeg hier je afbeelding URL in */
     margin: 0;
     padding: 0;
     font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -21,24 +20,32 @@ html, body {
     outline: none;
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5); /* optioneel: achtergrondje zodat je de pijlen beter ziet */
+  width: 50px;
+  height: 50px;
+}
 
-/* Ensure sections have proper spacing */
 #Homeintro article h2 {
-    margin-bottom: 1rem; /* Adds spacing between <h2> elements */
+    margin-bottom: 1rem; /
 }
 
-/* Align buttons properly */
+
 section .row {
-    gap: 1rem; /* Adds spacing between buttons */
-    justify-content: start; /* Aligns buttons to the left */
+    gap: 1rem; 
+    justify-content: start; 
 }
 
-/* Make buttons responsive */
+
 button {
-    min-width: 150px; /* Ensures buttons are large enough */
+    min-width: 150px; 
 }
 
-/* Header styling */
+
 header {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -46,13 +53,13 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 15%; /* Dynamic padding for responsiveness */
+    padding: 1rem 15%; 
     background-color: transparent;
     font-size: x-large;
     text-align: left;
 }
 
-/* Navbar styling */
+
 a, a:hover {
     text-decoration: none;
     color: #587e8c;
@@ -66,16 +73,16 @@ a, a:hover {
     color: red;
 }
 
-/* Button primary color customization */
+
 .btn-primary {
     --bs-btn-color: #113743;
     --bs-btn-bg: #587e8c;
 }
 
-/* Flexibly adjusting the header and container on smaller screens */
+
 @media (max-width: 1200px) {
     header {
-        padding: 1rem 10%; /* Less padding for medium screens */
+        padding: 1rem 10%; 
     }
     .container {
         padding: 15px;
@@ -84,7 +91,7 @@ a, a:hover {
 
 @media (max-width: 992px) {
     header {
-        padding: 1rem 5%; /* Less padding for tablets */
+        padding: 1rem 5%; 
     }
     .container {
         padding: 10px;
@@ -93,7 +100,7 @@ a, a:hover {
 
 @media (max-width: 768px) {
     header {
-        padding: 1rem 3%; /* Less padding for mobile */
+        padding: 1rem 3%; 
     }
     .container {
         padding: 8px;
@@ -102,7 +109,7 @@ a, a:hover {
 
 @media (max-width: 576px) {
     header {
-        padding: 1rem 2%; /* Even less padding for very small screens */
+        padding: 1rem 2%; 
     }
     .container {
         padding: 5px;

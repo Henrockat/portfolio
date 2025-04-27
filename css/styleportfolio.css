@@ -37,7 +37,7 @@
   }
   .carousel-inner .carousel-item {
     transition: transform 0.6s ease-in-out;
-    flex: 0 0 80%; /* show part of next/prev slides */
+    flex: 0 0 80%; 
     margin: 0 auto;
   }
 
@@ -71,4 +71,13 @@
   opacity: 1;
   transform: scale(1);
   pointer-events: none;
+}
+footer {
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+footer h6 {
+  font-size: 0.9rem;
 }
