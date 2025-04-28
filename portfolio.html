@@ -16,27 +16,30 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
     <script>
-      // Zoekfunctie om de inhoud te filteren
       function searchFunction() {
-        var input, filter, sections, text, i, txtValue;
-        input = document.querySelector('input[type="search"]'); // Zoekveld
-        filter = input.value.toUpperCase(); // Zoekterm in hoofdletters
-        sections = document.querySelectorAll('main h2, main h3, main p, main li'); // Zoek naar inhoud in H2, H3, P en LI
-    
-        // Loop door alle secties en kijk of de tekst overeenkomt met de zoekterm
-        for (i = 0; i < sections.length; i++) {
-          text = sections[i].textContent || sections[i].innerText; // Haal tekst op
-          if (text.toUpperCase().indexOf(filter) > -1) {
-            sections[i].style.display = ""; // Toon als het overeenkomt
-          } else {
-            sections[i].style.display = "none"; // Verberg als het niet overeenkomt
+        var input = document.querySelector('input[type="search"]'); // Zoekveld
+        var filter = input.value.toLowerCase(); // Zoekterm in kleine letters
+        var elements = document.querySelectorAll('main h2, main h3, main p, main li'); // Elementen waarin gezocht wordt
+        var found = false;
+      
+        elements.forEach(function(element) {
+          var text = element.textContent.toLowerCase();
+          if (text.includes(filter) && !found && filter.trim() !== "") {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll smooth naar element
+            element.style.backgroundColor = 'yellow'; // Highlight gevonden tekst
+            found = true;
+            
+            setTimeout(function() {
+              element.style.backgroundColor = ''; // Verwijder highlight na 2 seconden
+            }, 2000);
           }
+        });
+      
+        if (!found && filter.trim() !== "") {
+          alert("Geen resultaat gevonden.");
         }
       }
-    
-      // Koppel de zoekfunctie aan het inputveld
-      document.querySelector('input[type="search"]').addEventListener('keyup', searchFunction);
-    </script>
+      </script>
   <!-- eigen geschreven css voor jouw html-bestand -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -63,7 +66,7 @@
       </ul>
       <form class="d-flex me-3"role="search">
         <input class="form-control me-2" type="search" placeholder="zoeken" aria-label="Search">
-        <button class="btn btn-sm btn-outline-secondary" type="submit" onclick="event.preventDefault(); searchFunction();">zoeken</button>
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="event.preventDefault(); searchFunction();">zoeken</button>
       </form>
     </div>
   </nav>
@@ -107,10 +110,10 @@
     <h1 class="mb-4 text-center">Mijn Tech-Projecten</h1><br>
   
     <section class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-  
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project1.jpg" alt="Project 1" class="card-img-top" />
+
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/Verkeerslicht op kruispunt.PNG" alt="Project 1" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
           <h2 class="h5 card-title">Verkeerslicht Simulatie</h2>
@@ -118,66 +121,64 @@
           <a href="project1.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-  
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project2.jpg" alt="Project 2" class="card-img-top" />
+    
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/Slagboom en signalisatie.PNG" alt="Project 2" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
-          <h2 class="h5 card-title">Trein overweg slagboom</h2>
-          <p class="card-text">Trein overweg slagboom met aan/af meld knop</p>
+          <h2 class="h5 card-title">Trein Overweg Slagboom</h2>
+          <p class="card-text">Trein overweg slagboom met aan/af meld knop. Slagboom werkt met vertraging zodat kruispunt vrij en veilig is voordat slagboom sluit.</p>
           <a href="project2.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-  
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project3.jpg" alt="Project 3" class="card-img-top" />
+    
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/DC motorstuing met LCD.PNG" alt="Project 3" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
-          <h2 class="h5 card-title">Bewegingssensor Alarm</h2>
-          <p class="card-text">Detecteer beweging met een PIR sensor en activeer een alarm.</p>
+          <h2 class="h5 card-title">Motorsturing Met I2C-LCD Simulatie</h2>
+          <p class="card-text">DC motor sturing voor een wagentje met 2 aandrijf motoren gestuurd door een L9110 H-Brug module.</p>
           <a href="project3.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project3.jpg" alt="Project 3" class="card-img-top" />
+    
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/LED Binary op en neer teller.PNG" alt="Project 4" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
-          <h2 class="h5 card-title">Bewegingssensor Alarm</h2>
-          <p class="card-text">Detecteer beweging met een PIR sensor en activeer een alarm.</p>
+          <h2 class="h5 card-title">LED Binary Op En Neer Teller</h2>
+          <p class="card-text">LED Binary op en neer teller met 2 drukknoppen die positief of negatief tellen en tonen op LED's.</p>
           <a href="project4.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project3.jpg" alt="Project 3" class="card-img-top" />
+    
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/LED light show.PNG" alt="Project 5" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
-          <h2 class="h5 card-title">Bewegingssensor Alarm</h2>
-          <p class="card-text">Detecteer beweging met een PIR sensor en activeer een alarm.</p>
+          <h2 class="h5 card-title">LED Lichtshow</h2>
+          <p class="card-text">LED lightshow met verschillende effecten die gekozen kunnen worden via drukknoppen.</p>
           <a href="project5.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-
-      <article class="col card h-100 shadow-sm p-0">
-        <figure>
-          <img src="assets/images/project3.jpg" alt="Project 3" class="card-img-top" />
+    
+      <article class="col card h-100 shadow-sm p-2">
+        <figure class="overflow-hidden" style="height: 250px;">
+          <img src="assets/images-labo/GPS tag.PNG" alt="Project 6" class="card-img-top w-100 h-100" style="object-fit: cover;">
         </figure>
         <figcaption class="card-body">
-          <h2 class="h5 card-title">Bewegingssensor Alarm</h2>
-          <p class="card-text">Detecteer beweging met een PIR sensor en activeer een alarm.</p>
+          <h2 class="h5 card-title">GPS Tag TTGO T-Beam</h2>
+          <p class="card-text">Deze GPS Tag op basis van de TTGO T-Beam maakt het mogelijk om fietsen, rugzakken en andere waardevolle spullen in realtime te volgen.</p>
           <a href="project6.html" class="btn btn-primary">Bekijk project</a>
         </figcaption>
       </article>
-      
-  
-      
-  
+    
     </section>
+  
 
     
     <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>

@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
-  <!-- resetten van browsers -->
-  <link rel="stylesheet" href="css/reset.css">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    <title>Contact</title>
+    <!-- resetten van browsers -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <!-- Bootstrap CSS icons: https://icons.getbootstrap.com/#usage -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- JavaScript: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <!-- Bootstrap CSS icons: https://icons.getbootstrap.com/#usage -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- JavaScript: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
-  <script>
-    // Zoekfunctie om de inhoud te filteren
-    function searchFunction() {
-      var input, filter, sections, text, i, txtValue;
-      input = document.querySelector('input[type="search"]'); // Zoekveld
-      filter = input.value.toUpperCase(); // Zoekterm in hoofdletters
-      sections = document.querySelectorAll('main h2, main h3, main p, main li'); // Zoek naar inhoud in H2, H3, P en LI
-  
-      // Loop door alle secties en kijk of de tekst overeenkomt met de zoekterm
-      for (i = 0; i < sections.length; i++) {
-        text = sections[i].textContent || sections[i].innerText; // Haal tekst op
-        if (text.toUpperCase().indexOf(filter) > -1) {
-          sections[i].style.display = ""; // Toon als het overeenkomt
-        } else {
-          sections[i].style.display = "none"; // Verberg als het niet overeenkomt
+    <script>
+      function searchFunction() {
+        var input = document.querySelector('input[type="search"]'); // Zoekveld
+        var filter = input.value.toLowerCase(); // Zoekterm in kleine letters
+        var elements = document.querySelectorAll('main h2, main h3, main p, main li'); // Elementen waarin gezocht wordt
+        var found = false;
+      
+        elements.forEach(function(element) {
+          var text = element.textContent.toLowerCase();
+          if (text.includes(filter) && !found && filter.trim() !== "") {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll smooth naar element
+            element.style.backgroundColor = 'yellow'; // Highlight gevonden tekst
+            found = true;
+            
+            setTimeout(function() {
+              element.style.backgroundColor = ''; // Verwijder highlight na 2 seconden
+            }, 2000);
+          }
+        });
+      
+        if (!found && filter.trim() !== "") {
+          alert("Geen resultaat gevonden.");
         }
       }
-    }
-  
-    // Koppel de zoekfunctie aan het inputveld
-    document.querySelector('input[type="search"]').addEventListener('keyup', searchFunction);
-  </script>
-  <!-- eigen geschreven css voor jouw html-bestand -->
-  <link rel="stylesheet" href="css/stylecontact.css">
+      </script>
+    <!-- eigen geschreven css voor jouw html-bestand -->
+    <link rel="stylesheet" href="css/stylecontact.css">
 </head>
 
 <body class="p-3 m-0 border-0 bd-example">
@@ -52,7 +55,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link fs-5"href="index.html">Home</a>
+          <a class="nav-link fs-5" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link fs-5" href="portfolio.html">Portfolio</a>
@@ -63,77 +66,74 @@
       </ul>
       <form class="d-flex me-3" role="search">
         <input class="form-control me-2" type="search" placeholder="zoeken" aria-label="Search">
-        <button class="btn btn-sm btn-outline-secondary" type="submit" onclick="event.preventDefault(); searchFunction();">zoeken</button>
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="event.preventDefault(); searchFunction();">zoeken</button>
       </form>
     </div>
   </nav>
 
+  <main class="container my-5">
+    <section class="row">
+      <!-- Text Section -->
+      <section class="col-lg-8">
+        <article class="mb-5">
+          <h2 class="about-title">About</h2>
+          <p class="about-description">Over mijn passie voor technologie en innovatie</p>
+          <p class="about-description">
+              Mijn passie voor technologie en de werking van apparaten ontstond al op jonge leeftijd.
+              Van kleins af aan was ik geboeid door hoe dingen werken en hoe ik ze zelf kon herstellen of verbeteren.
+              Door de jaren heen groeide hieruit een hobby: afgedankte mechanische onderdelen en toestellen nieuw leven inblazen.
+          </p>
+        
+          <p class="about-description">
+            Vandaag werk ik graag aan projecten om mijn kennis verder te verruimen.
+            Daarbij probeer ik steeds nieuwe manieren te bedenken om IoT-apparaten in te zetten voor home automation of creatieve hobbyprojecten.
+          </p>
+        </article>
 
-<main class="container my-5">
-    
-  <section class="row">
+        <article>
+          <h2 class="contact-title">Get in Touch</h2>
+          <p class="contact-description">
+            Vul het formulier hieronder in en ik neem zo snel mogelijk contact met je op.
+          </p>
 
-    <!-- Text Section -->
-    <section class="col-lg-8">
+          <form class="contact-form" action="" method="POST">
+            <fieldset class="form-group-container">
+              <label class="form-group">
+                <span class="form-label">Naam</span>
+                <input id="name" name="name" class="form-input" type="text" placeholder="Jouw Naam">
+              </label>
 
-      <article class="mb-5">
-        <h2 class="about-title">About</h2>
-        <p class="about-description">Over mijn passie voor technologie en innovatie</p>
-        <p class="about-description">
-            Mijn passie voor technologie en de werking van apparaten ontstond al op jonge leeftijd.
-            Van kleins af aan was ik geboeid door hoe dingen werken en hoe ik ze zelf kon herstellen of verbeteren.
-            Door de jaren heen groeide hieruit een hobby: afgedankte mechanische onderdelen en toestellen nieuw leven inblazen.
-        </p>
-      
-        <p class="about-description">
-          Vandaag werk ik graag aan projecten om mijn kennis verder te verruimen.
-          Daarbij probeer ik steeds nieuwe manieren te bedenken om IoT-apparaten in te zetten voor home automation of creatieve hobbyprojecten.
-        </p>
+              <label class="form-group">
+                <span class="form-label">Email</span>
+                <input id="email" name="email" class="form-input" type="email" placeholder="Jouw Email">
+              </label>
 
-      </article>
+              <label class="form-group">
+                <span class="form-label">Telefoon</span>
+                <input id="phone" name="phone" class="form-input" type="text" placeholder="Telefoonnummer">
+              </label>
 
-      <article>
-        <h2 class="contact-title">Get in Touch</h2>
-        <p class="contact-description">
-          Fill in the form below and I'll get back to you as soon as possible.
-        </p>
+              <label class="form-group">
+                <span class="form-label">Bericht</span>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Jouw Bericht"></textarea>
+              </label>
+            </fieldset>
 
-        <form class="contact-form" action="" method="POST">
-          <fieldset class="form-group-container">
-            <label class="form-group">
-              <span class="form-label">Name</span>
-              <input id="name" name="name" class="form-input" type="text" placeholder="Your Name">
-            </label>
+            <button class="form-submit" type="submit">Stuur Bericht</button>
+          </form>
+        </article>
 
-            <label class="form-group">
-              <span class="form-label">Email</span>
-              <input id="email" name="email" class="form-input" type="email" placeholder="Your Email">
-            </label>
+      </section>
 
-            <label class="form-group">
-              <span class="form-label">Phone</span>
-              <input id="phone" name="phone" class="form-input" type="text" placeholder="Phone Number">
-            </label>
-
-            <label class="form-group">
-              <span class="form-label">Message</span>
-              <textarea id="message" name="message" class="form-textarea" placeholder="Your Message"></textarea>
-            </label>
-          </fieldset>
-
-          <button class="form-submit" type="submit">Send Message</button>
-        </form>
-      </article>
+      <!-- Image Section -->
+      <aside class="col-lg-4 d-none d-lg-block">
+        <img class="about-image" src="assets/images/professionele-foto.jpg" alt="Over mij foto">
+      </aside>
 
     </section>
+  </main>
 
-    <!-- Image Section -->
-    <aside class="col-lg-4 d-none d-lg-block">
-      <img class="about-image" src="assets/images/professionele-foto.jpg" alt="About Image">
-    </aside>
-
-  </section>
-
-</main>
-<footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
+  <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
+  
+</body>
 </html>

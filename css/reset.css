@@ -1,0 +1,95 @@
+/* Basic Reset for consistent styling across all browsers */
+
+/* Remove margin and padding for all elements */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a consistent font family across the site */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Remove list styling (bullets and margins) */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove underlines and default blue color from links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove border from fieldset elements */
+fieldset {
+  border: none;
+}
+
+/* Make sure images don't overflow their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent form inputs from having extra space */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Set line-height for better text readability */
+body {
+  line-height: 1.6;
+}
+
+/* Remove default styling for tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Set a default background color for the page */
+body {
+  background-color: #fff;
+}
+
+/* Remove default styling on forms */
+form {
+  display: block;
+}
+
+/* Allow sections like header, footer, and main to behave consistently */
+header,
+footer,
+main {
+  display: block;
+}
+
+/* Optional: Set default styles for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+/* Ensure that all form elements are aligned and styled consistently */
+button {
+  background: none;
+  cursor: pointer;
+}
+
+
+input,
+button,
+textarea {
+  padding: 0.5rem;
+  margin: 0;
+}
