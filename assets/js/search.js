@@ -1,6 +1,6 @@
 
     function searchFunction() {
-    var input = document.querySelector('input[type="search"]'); // Zoekveld
+     input = document.querySelector('input[type="search"]'); // Zoekveld
     var filter = input.value.toLowerCase(); // Zoekterm in kleine letters
     var elements = document.querySelectorAll('main h2, main h3, main p, main li'); // Elementen waarin gezocht wordt
     var found = false;
