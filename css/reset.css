@@ -1,6 +1,4 @@
-/* Basic Reset for consistent styling across all browsers */
 
-/* Remove margin and padding for all elements */
 *,
 *::before,
 *::after {
@@ -9,34 +7,34 @@
   box-sizing: border-box;
 }
 
-/* Set a consistent font family across the site */
+
 body {
   font-family: Arial, sans-serif;
 }
 
-/* Remove list styling (bullets and margins) */
+
 ul, ol {
   list-style: none;
 }
 
-/* Remove underlines and default blue color from links */
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Remove border from fieldset elements */
+
 fieldset {
   border: none;
 }
 
-/* Make sure images don't overflow their container */
+
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Prevent form inputs from having extra space */
+
 input,
 button,
 select,
@@ -47,18 +45,18 @@ textarea {
   outline: none;
 }
 
-/* Set line-height for better text readability */
+
 body {
   line-height: 1.6;
 }
 
-/* Remove default styling for tables */
+
 table {
   border-collapse: collapse;
   width: 100%;
 }
 
-/* Set a default background color for the page */
+
 body {
   background-color: #fff;
 }

@@ -157,6 +157,26 @@ button {
   object-fit: cover;
 }
 
+.contact-aside {
+  font-size: 0.95rem;
+  max-width: 100%;
+}
+
+.contact-aside a:hover {
+  color: #ff4f1b;
+  transition: color 0.3s ease;
+}
+
+.social-icons i {
+  transition: transform 0.2s ease;
+}
+
+.social-icons i:hover {
+  transform: scale(1.2);
+  color: #ff4f1b;
+}
+
+
 #lightboxModal .btn {
   background-color: rgba(0, 0, 0, 0.4); /* transparante zwarte achtergrond */
   border: none;
