@@ -5,6 +5,9 @@ html, body {
     color: #113743;
 }
 
+.navbar-brand img {
+  margin-left: 1rem; /* of gebruik 2rem voor meer ruimte */
+}
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-size: 100% 100%;
@@ -15,6 +18,12 @@ html, body {
   height: 50px;
 }
 
+#lightboxImage {
+  max-height: 80vh;
+  max-width: 100%;
+  object-fit: contain;
+
+}
 
 .thumbnail:hover {
   transform: scale(1.03);
@@ -146,4 +155,43 @@ button {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
+}
+
+#lightboxModal .btn {
+  background-color: rgba(0, 0, 0, 0.4); /* transparante zwarte achtergrond */
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+#lightboxModal .btn:hover {
+  opacity: 1;
+}
+
+/* Icoontje zelf kleiner op kleine schermen */
+#lightboxModal .btn i {
+  font-size: 1.8rem;
+  color: #fff;
+}
+pre {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      color: #333;
+      white-space: pre-wrap;       /* Zorgt ervoor dat lange regels niet wegvallen */
+      word-wrap: break-word;      /* Zorgt ervoor dat lange woorden worden afgebroken */
+      overflow-x: auto;           /* Zorgt ervoor dat lange regels horizontaal scrollen */
+}
+
+@media (max-width: 576px) {
+  #lightboxModal .btn {
+    padding: 0.25rem 0.4rem;
+  }
+
+  #lightboxModal .btn i {
+    font-size: 1.4rem;
+  }
 }

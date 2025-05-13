@@ -3,71 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verkeerslicht Simulatie - Portfolio</title>
+  <title>Motorsturing met I2C-LCD Simulatie - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    pre {
-      background-color: #f8f9fa;
-      padding: 15px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      color: #333;
-      white-space: pre-wrap;       /* Zorgt ervoor dat lange regels niet wegvallen */
-      word-wrap: break-word;      /* Zorgt ervoor dat lange woorden worden afgebroken */
-      overflow-x: auto;           /* Zorgt ervoor dat lange regels horizontaal scrollen */
-    }
-  </style>
 </head>
 <body class="container py-4">
 
   <a href="portfolio.html" class="btn btn-outline-secondary mb-4">&larr; Terug naar portfolio</a>
 
-  <h1 class="mb-3">Verkeerslicht Simulatie</h1>
-  <p class="lead">Dit project simuleert een verkeerslicht met behulp van drie LEDs (rood, geel en groen). Elke LED brandt gedurende een bepaalde tijd om het gedrag van een echt verkeerslicht na te bootsen.</p>
+  <h1 class="mb-3">Motorsturing met I2C-LCD Simulatie</h1>
+  <p class="lead">In dit project wordt een simulatie van een gemotoriseerd wagentje weergegeven, met een I2C LCD-display voor feedback en knoppen voor richtingsbediening.</p>
 
   <hr class="my-4">
 
-  <h2>Schematische weergave</h2>
-  <img src="assets/images/schema-verkeerslicht.jpg" alt="Schema Verkeerslicht" class="img-fluid rounded mb-4"/>
+  <div class="row g-4 align-items-start mb-5">
 
-  <h2>Benodigde hardware</h2>
-  <ul>
-    <li>1x Arduino Uno</li>
-    <li>3x LED (rood, geel, groen)</li>
-    <li>3x Weerstand (220Ω)</li>
-    <li>Breadboard</li>
-    <li>Jumper wires</li>
-    <li>USB-kabel</li>
-  </ul>
+    <div class="col-lg-6">
+      <h2>Mogelijkheid tot simulatie</h2>
+      <p>Hoewel sommige componenten zoals de L9110 H-brug module niet beschikbaar zijn in <a href="https://wokwi.com/" target="_blank" rel="noopener noreferrer">Wokwi</a>, kan je een deel van deze opstelling wel simuleren. Dit is ideaal om je code te testen of inzicht te krijgen in het gedrag van microcontrollers en schakelingen.</p>
 
-  <h2>Stappenplan / Tutorial</h2>
-  <ol>
-    <li>Plaats de drie LEDs op het breadboard, elk met een weerstand van 220Ω in serie.</li>
-    <li>Verbind elke LED met een digitale pin op de Arduino (bijv. 2, 3 en 4).</li>
-    <li>Upload onderstaande code naar de Arduino via de Arduino IDE.</li>
-    <li>Observeer hoe de LEDs in volgorde knipperen zoals bij een verkeerslicht.</li>
-  </ol>
+      <h2>Benodigde hardware</h2>
+      <ul>
+        <li>1x Arduino Nano</li>
+        <li>1x L9110 H-Brug module</li>
+        <li>2x DC motoren</li>
+        <li>1x I2C LCD-display</li>
+        <li>1x Potentiometer</li>
+        <li>4x drukknoppen</li>
+        <li>Weerstanden (220Ω)</li>
+        <li>Jumpers en breadboard</li>
+      </ul>
+
+      <h2>Stappenplan / Tutorial</h2>
+      <ol>
+        <li>Sluit de motoren aan op de L9110-module.</li>
+        <li>Verbind de H-brug met de juiste digitale pinnen van de Arduino Nano.</li>
+        <li>Koppel de I2C LCD aan SDA/SCL (A4/A5).</li>
+        <li>Verbind de drukknoppen voor richtingbesturing en snelheid met het breadboard.</li>
+        <li>Gebruik de potentiometer om snelheidsregeling mogelijk te maken.</li>
+        <li>Upload de code via de Arduino IDE en test de functies van de robot.</li>
+      </ol>
+    </div>
+
+    <div class="col-lg-6">
+      <h2>Schematische weergave</h2>
+      <img src="assets/images-labo/DC motorstuing met LCD.PNG" alt="Schema Motorsturing LCD" class="img-fluid rounded">
+    </div>
+
+  </div>
 
   <h2>Arduino Code</h2>
   <pre><code>
-void setup() {
-  pinMode(2, OUTPUT); // Rood
-  pinMode(3, OUTPUT); // Geel
-  pinMode(4, OUTPUT); // Groen
-}
+    #include <Arduino.h>
+    #include <LiquidCrystal_I2C.h> // bibliotheek voor I2C
+    LiquidCrystal_I2C lcd(0x27, 16, 2);  //I2C adres 0x27 (bij onze LCDs is dit 0x20), 16 kolommen en 2 rijen
 
-void loop() {
-  digitalWrite(2, HIGH);
-  delay(3000);
-  digitalWrite(2, LOW);
-  digitalWrite(3, HIGH);
-  delay(1000);
-  digitalWrite(3, LOW);
-  digitalWrite(4, HIGH);
-  delay(3000);
-  digitalWrite(4, LOW);
-}
+    const int speedpot_pin = A0;  // aangeven analog input van pot voor snelhied motoren
+
+    const int CC_CC_button = 3;
+    const int C_C_button = 4;
+    const int CC_C_button = 5;      //aangeven  drukknop naar links 
+    const int C_CC_button = 6;      // aangeven drukknop naar rechts 
+
+
+    const int PWM_M1 = 10;        // aageven richting en snelheid regeling pinne voor M1 en M2
+    const int Dir_M1 = 12;
+    const int PMW_M2 = 11;
+    const int Dir_M2 = 9;
+
+    int pot_waarde = 0;       // ingelezen analog waarde pot.
+    int duty_waarde = 0;      // snelheid waarde afgeleid van aanalog potwaarde (PWM)
+    int speed = 0;            // waarde om snelheid motor naar 0% bij het loslasen van drukknoppen.
+
+
+    void setup()
+    { lcd.init(); // initialiseer de LCD
+      lcd.backlight();
+      
+      pinMode(PWM_M1,OUTPUT);     //snelheid regeling pin motor1 PWM signal
+      pinMode(PMW_M2, OUTPUT);    //snelheid regeling pin motor1 PWM signal
+      pinMode(Dir_M1,OUTPUT);     //richting pin voor motor1 H-brug 
+      pinMode(Dir_M2, OUTPUT);    //richting pin voor motor2 H-brug
+
+      pinMode(CC_CC_button,INPUT);     // rij vooruit
+      pinMode(C_C_button,INPUT);        //rij achteruit
+      pinMode(CC_C_button, INPUT);      //draai rechts
+      pinMode(C_CC_button, INPUT);      // draai links
+
+      pinMode(speedpot_pin, INPUT); //potentiometer aan de juiste pin aansluiten 
+      Serial.begin(9600);
+
+    }
+
+    void loop() {
+      Serial.println(digitalRead(CC_CC_button));
+      Serial.println(digitalRead(C_C_button));
+      Serial.println(digitalRead(CC_C_button));
+      Serial.println(digitalRead(C_CC_button));
+      //inlezen van analogwaarde van pot.
+      speed = analogRead(speedpot_pin);
+      Serial.print("pot_waarde= ");
+      Serial.println(speed);
+
+      //omzetting van ingelezen analogwaarde waarde naar PWM signal
+      // de duty_waarde moet een waarde hebben tussen 0 en 255 (tussen 0% en 100%)
+      duty_waarde = map(speed, 0, 1023, 0, 255);
+      Serial.print("duty_waarde= ");
+      Serial.println(duty_waarde);
+      
+      delay(500);
+
+      if (digitalRead(CC_CC_button) ==HIGH) {
+        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
+        lcd.print("Rij Vooruit");  // print bericht vanaf (0, 0)
+        //rij vooruit
+      digitalWrite(Dir_M1,LOW);
+      digitalWrite(Dir_M2,LOW);
+        //snelheid instellen aan de hand van de duty waarde
+      analogWrite(PWM_M1,duty_waarde);
+      analogWrite(PMW_M2,duty_waarde);
+
+      }
+      else if (digitalRead(C_C_button) == HIGH) {
+        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
+        lcd.print("Rij Achteruit");  // print bericht vanaf (0, 0)
+      //Rij achteruit
+      digitalWrite(Dir_M1,HIGH);
+      digitalWrite(Dir_M2,HIGH);
+        //snelheid instellen aan de hand van de duty waarde 
+        analogWrite(PWM_M1,duty_waarde);
+        analogWrite(PMW_M2,duty_waarde);
+
+      }
+      else if (digitalRead(CC_C_button) ==HIGH) {
+        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
+        lcd.print("Rechts draaien");  // print bericht vanaf (0, 0)
+        //naar rechts draaien
+      digitalWrite(Dir_M1,HIGH);
+      digitalWrite(Dir_M2, LOW);
+        //snelheid instellen aan de hand van de duty waarde
+      analogWrite(PWM_M1,duty_waarde);
+      analogWrite(PMW_M2,duty_waarde);
+      }
+      else if (digitalRead(C_CC_button) == HIGH) {
+        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
+        lcd.print("Links draaien");  // print bericht vanaf (0, 0)
+      //naar links draaien
+        digitalWrite(Dir_M1,LOW);
+        digitalWrite(Dir_M2, HIGH);
+        //snelheid instellen aan de hand van de duty waarde
+        analogWrite(PWM_M1,duty_waarde);
+        analogWrite(PMW_M2,duty_waarde);
+
+      }
+      else {
+        speed= 0;
+        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
+        lcd.print("     STOP      ");  // print bericht vanaf (0, 0)
+        analogWrite(PWM_M1, speed);
+        analogWrite(PMW_M2, speed);
+      }
+      
+    }
   </code></pre>
 
 </body>
