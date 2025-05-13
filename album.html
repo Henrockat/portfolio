@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>album</title>
+  <title>Album</title>
   <!-- resetten van browsers -->
   <link rel="stylesheet" href="css/reset.css">
   <!-- Bootstrap CSS -->
@@ -13,12 +13,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- JavaScript: Bootstrap Bundle with Popper -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fonts.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
 
   <script src="assets/js/search.js" defer></script>
   <script src="assets/js/album-jump.js" defer></script>
+  <script src="assets/js/jaartal.js" defer></script>
+
 
   
 </head>
@@ -54,15 +57,28 @@
     </nav>
     <main class="container mt-5">
       <h1 class="mb-4 text-center">Scrap Metal Art Galerij</h1><br>
+      <p class="fs-5 mb-4">
+        <strong>Deze creaties zijn opgebouwd uit gerecupereerde machineonderdelen — elk tandwiel, lager en bout heeft een vorig leven gehad.</strong><br>
+        In deze galerij komen ze opnieuw tot leven, gevormd tot unieke robotachtige figuren vol karakter.  
+        Van stoere poses tot subtiele details: elk stuk vertelt z'n eigen verhaal. Laat je verrassen door hoe oud ijzer kunst wordt!
+      </p><br>
+
   
       <section id="projectCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
         <ol class="carousel-indicators">
           <li data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active"></li>
           <li data-bs-target="#projectCarousel" data-bs-slide-to="1"></li>
           <li data-bs-target="#projectCarousel" data-bs-slide-to="2"></li>
+          <li data-bs-target="#projectCarousel" data-bs-slide-to="4"></li>
+          <li data-bs-target="#projectCarousel" data-bs-slide-to="5"></li>
+          <li data-bs-target="#projectCarousel" data-bs-slide-to="6"></li>
+          <li data-bs-target="#projectCarousel" data-bs-slide-to="7"></li>
+          <li data-bs-target="#projectCarousel" data-bs-slide-to="8"></li>
         </ol>
       
         <section class="carousel-wrapper position-relative overflow-hidden px-3 px-md-5">
+          <div class="d-none d-md-block">
+          </div>
           <section class="carousel-inner rounded shadow">
             <figure class="carousel-item active">
               <img src="assets/image-art/1000015876.jpg" class="img-fluid d-block mx-auto"
@@ -75,6 +91,30 @@
             <figure class="carousel-item">
               <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
                 style="max-height: 500px; object-fit: cover;" alt="Slide 3">
+            </figure>
+            <figure class="carousel-item">
+              <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                style="max-height: 500px; object-fit: cover;" alt="Slide 4">
+            </figure>
+            <figure class="carousel-item">
+              <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                style="max-height: 500px; object-fit: cover;" alt="Slide 4">
+            </figure>
+            <figure class="carousel-item">
+              <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                style="max-height: 500px; object-fit: cover;" alt="Slide 5">
+            </figure>
+            <figure class="carousel-item">
+              <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                style="max-height: 500px; object-fit: cover;" alt="Slide 6">
+            </figure>
+            <figure class="carousel-item">
+              <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                style="max-height: 500px; object-fit: cover;" alt="Slide 7">
+                <figure class="carousel-item">
+                  <img src="assets/image-art/1000015885.jpg" class="img-fluid d-block mx-auto"
+                    style="max-height: 500px; object-fit: cover;" alt="Slide 8">
+                </figure>
             </figure>
           </section>
         </section>
@@ -98,12 +138,30 @@
         <div class="col">
           <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 3">
         </div>
+        <div class="col">
+          <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 4">
+        </div>
+        <div class="col">
+          <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 5">
+        </div>
+        <div class="col">
+          <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 6">
+        </div>
+        <div class="col">
+          <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 7">
+        </div>
+        <div class="col">
+          <img src="assets/image-art/1000015885.jpg" class="img-fluid rounded shadow-sm thumbnail" alt="Art 8">
+        </div>
+        
       </section>
       
     </main>
 
-    <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
+    <footer class="container-fluid bg-light text-center h6 small p-4">&copy; Henok Metal Art <span id="year"></span> </footer>
     <script src="assets/js/search.js" defer></script>
     <script src="assets/js/album-jump.js" defer></script>
+    
+
   </body>
   </html>

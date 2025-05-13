@@ -15,33 +15,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
-    <script>
-      function searchFunction() {
-        var input = document.querySelector('input[type="search"]'); // Zoekveld
-        var filter = input.value.toLowerCase(); // Zoekterm in kleine letters
-        var elements = document.querySelectorAll('main h2, main h3, main p, main li'); // Elementen waarin gezocht wordt
-        var found = false;
-      
-        elements.forEach(function(element) {
-          var text = element.textContent.toLowerCase();
-          if (text.includes(filter) && !found && filter.trim() !== "") {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll smooth naar element
-            element.style.backgroundColor = 'yellow'; // Highlight gevonden tekst
-            found = true;
-            
-            setTimeout(function() {
-              element.style.backgroundColor = ''; // Verwijder highlight na 2 seconden
-            }, 2000);
-          }
-        });
-      
-        if (!found && filter.trim() !== "") {
-          alert("Geen resultaat gevonden.");
-        }
-      }
-      </script>
+  <script src="assets/js/search.js" defer></script>
   <!-- eigen geschreven css voor jouw html-bestand -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <script src="assets/js/jaartal.js" defer></script>
+</head>
 </head>
 
 <body class="p-3 m-0 border-0 bd-example">
@@ -76,6 +55,13 @@
   <main class="container mt-5">
     
     <h1 class="mb-4 text-center">Embedded Creaties: Arduino, Raspberry Pi & ESP32</h1><br>
+    <p class="fs-5 mb-4">
+      <strong>Deze embedded creaties zijn stuk voor stuk zelfbouwprojecten die jij ook kunt namaken.</strong><br>
+      Je kunt ze uitbreiden, aanpassen of gewoon als inspiratie gebruiken. Zit je vast of heb je vragen? 
+      Stuur me gerust een <a href="contact.html#contact-form" class="fw-semibold link-underline link-underline-opacity-25 link-underline-opacity-75-hover text-danger-emphasis">
+  bericht
+</a>.
+    </p>
   
     <section class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
 
@@ -86,7 +72,7 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">Verkeerslicht Simulatie</h2>
           <p class="card-text">Een eenvoudige verkeerslichtsimulatie met LEDs en timers.</p>
-          <a href="project1.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project1.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
@@ -97,7 +83,7 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">Trein Overweg Slagboom</h2>
           <p class="card-text">Trein overweg slagboom met aan/af meld knop. Slagboom werkt met vertraging zodat kruispunt vrij en veilig is voordat slagboom sluit.</p>
-          <a href="project2.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project2.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
@@ -108,7 +94,7 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">Motorsturing Met I2C-LCD Simulatie</h2>
           <p class="card-text">DC motor sturing voor een wagentje met 2 aandrijf motoren gestuurd door een L9110 H-Brug module.</p>
-          <a href="project3.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project3.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
@@ -119,7 +105,7 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">LED Binary Op En Neer Teller</h2>
           <p class="card-text">LED Binary op en neer teller met 2 drukknoppen die positief of negatief tellen en tonen op LED's.</p>
-          <a href="project4.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project4.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
@@ -130,7 +116,7 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">LED Lichtshow</h2>
           <p class="card-text">LED lightshow met verschillende effecten die gekozen kunnen worden via drukknoppen.</p>
-          <a href="project5.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project5.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
@@ -141,16 +127,16 @@
         <figcaption class="card-body">
           <h2 class="h5 card-title">GPS Tag TTGO T-Beam</h2>
           <p class="card-text">Deze GPS Tag op basis van de TTGO T-Beam maakt het mogelijk om fietsen, rugzakken en andere waardevolle spullen in realtime te volgen.</p>
-          <a href="project6.html" class="btn btn-primary">Bekijk project</a>
+          <a href="project6.html" class="btn btn-orange">Bekijk project</a>
         </figcaption>
       </article>
     
     </section>
   
 
-    
-    <footer class="container-fluid bg-light text-center h6 small p-4">&copy; 2025 Henok Metal Art </footer>
   </main>
+  <footer class="container-fluid bg-light text-center h6 small p-4">&copy; Henok Metal Art <span id="year"></span></footer>
 
-  
+
+  <script src="assets/js/search.js" defer></script>
 </body>
