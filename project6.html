@@ -6,15 +6,16 @@
   <title>GPS Tag TTGO T-Beam - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="assets/js/jaartal.js" defer></script>
 </head>
-<body class="container py-4">
 
+<body class="container py-4">
   <a href="portfolio.html" class="btn btn-outline-secondary mb-4">&larr; Terug naar portfolio</a>
 
-  <h1 class="mb-3">GPS Tag TTGO T-Beam</h1>
+  <h1 class="mb-3">GPS Tag met TTGO T-Beam en LoRa</h1>
   <p class="lead">
-    Deze GPS Tag op basis van de TTGO T-Beam maakt het mogelijk om fietsen, rugzakken en andere waardevolle spullen in realtime te volgen. 
-    Dankzij GPS en LoRa-communicatie kun je eenvoudig de locatie traceren, zelfs over lange afstanden zonder gebruik van mobiel internet.
+    Deze GPS Tag op basis van de TTGO T-Beam maakt het mogelijk om fietsen, rugzakken of andere waardevolle voorwerpen op afstand te volgen. 
+    Dankzij GPS en LoRa-communicatie kun je live locatiegegevens versturen zonder mobiel netwerk.
   </p>
 
   <hr class="my-4">
@@ -23,68 +24,104 @@
     <div class="col-lg-6">
       <h2>Wat kun je ermee?</h2>
       <p>
-        Dit project leert je hoe je met behulp van een <strong>ESP32 TTGO T-Beam</strong> en <strong>LoRa-technologie</strong> een GPS-tracker kunt maken die werkt via <a href="https://www.thethingsnetwork.org/" target="_blank">The Things Network</a>. 
-        Perfect voor toepassingen zoals:
+        Dit project toont hoe je een low-power GPS-tracker maakt die via LoRa en <a href="https://www.thethingsnetwork.org/" target="_blank">The Things Network</a> (TTN) gegevens kan verzenden.
+        Enkele mogelijke toepassingen:
       </p>
       <ul>
-        <li>Fietstrackers</li>
-        <li>Rugzakbewaking voor kinderen</li>
-        <li>Reizende objecten zonder mobiele data</li>
-        <li>Zelfgemaakte IoT-locatieoplossingen</li>
+        <li>Fiets- of voertuigtracking</li>
+        <li>Locatiebewaking van bagage of huisdieren</li>
+        <li>Experimentele IoT-projecten met LoRaWAN</li>
+        <li>Werken met ESP32, GPS, en TTN in één compact systeem</li>
       </ul>
-      <p>
-        De code voor dit project is afkomstig van GitHub: <br>
+
+      <p class="mt-3">
+        De volledige code en uitleg zijn afkomstig van deze open-source repository:<br>
         <a href="https://github.com/kizniche/ttgo-tbeam-ttn-tracker" target="_blank">
           github.com/kizniche/ttgo-tbeam-ttn-tracker
         </a>
       </p>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 illustration-block">
       <h2>Schematische weergave</h2>
-      <img src="assets/images-labo/GPS%20tag.PNG" alt="Schema GPS Tag TTGO T-Beam" class="img-fluid rounded mb-4"/>
+      <img src="assets/images-labo/GPS%20tag.PNG" alt="Schema GPS Tracker TTGO T-Beam" class="img-fluid rounded project-illustration">
     </div>
   </div>
 
-  <h2>Benodigde hardware</h2>
-  <ul>
-    <li>1x TTGO T-Beam module (met ingebouwde GPS en LoRa)</li>
-    <li>1x USB-kabel (micro-USB)</li>
-    <li>1x 18650 Li-Ion batterij (optioneel voor mobiele voeding)</li>
-    <li>GPS-antenne en LoRa-antenne</li>
-    <li>Computer met Arduino IDE geïnstalleerd</li>
-  </ul>
+  <hr class="my-5">
 
-  <h2>Stappenplan / Tutorial</h2>
-  <ol>
-    <li>Sluit de TTGO T-Beam via USB aan op je computer.</li>
-    <li>Installeer de juiste board definitions en libraries in de Arduino IDE (ESP32, TinyGPS++, LoRa libraries).</li>
-    <li>Upload de GPS-tracking sketch naar het bord.</li>
-    <li>Monitor de seriële output om GPS-positiegegevens te bekijken of zend ze via LoRa.</li>
-  </ol>
+  <section class="mb-5">
+    <h2>Doel van het project</h2>
+    <p>
+      In dit project leer je hoe je GPS-gegevens verzamelt en via LoRa verzendt naar een netwerk zoals TTN. 
+      Je leert hoe je de ESP32 TTGO T-Beam configureert en hoe je C++ code compileert en aanpast in de Arduino IDE.
+    </p>
+  </section>
 
-  <h2>Code & Handleiding</h2>
-    <p>
-      Voor dit project maken we gebruik van de open-source code van het GitHub-project:
-      <a href="https://github.com/kizniche/ttgo-tbeam-ttn-tracker" target="_blank">
-        ttgo-tbeam-ttn-tracker
-      </a>.
-    </p>
-    <p>
-      In deze repository vind je alles wat je nodig hebt:
-    </p>
+  <section class="mb-5">
+    <h2>Benodigde hardware</h2>
     <ul>
-      <li>Volledige C++ code voor de Arduino-omgeving</li>
-      <li>Instructies voor het configureren van je TTGO T-Beam</li>
-      <li>Handleiding voor het instellen van een verbinding met <strong>The Things Network (TTN)</strong></li>
-      <li>Documentatie over hoe de GPS-gegevens via LoRa verzonden worden</li>
+      <li>TTGO T-Beam V1.0 (met ESP32, GPS en LoRa geïntegreerd)</li>
+      <li>GPS-antenne + LoRa-antenne</li>
+      <li>18650 batterij (optioneel voor mobiele voeding)</li>
+      <li>Micro-USB kabel</li>
+      <li>Computer met Arduino IDE</li>
     </ul>
-    <p>
-      ⚙️ De configuratie wordt aangepast in het bestand <code>config.h</code>, waar je je TTN-apparaatgegevens (Device EUI, App EUI, App Key) moet invoeren.
-    </p>
-    <p>
-      🔧 De tracker verstuurt periodiek GPS-coördinaten via het LoRaWAN-protocol naar TTN, en kan in real-time gevolgd worden via een dashboard of MQTT-interface.
-    </p>
+  </section>
 
+  <section class="mb-5">
+    <h2>Stappenplan / Tutorial</h2>
+    <ol>
+      <li>Sluit de TTGO T-Beam aan op je computer via USB.</li>
+      <li>Installeer ESP32 board support in Arduino IDE.</li>
+      <li>Installeer benodigde libraries: <code>TinyGPS++</code>, <code>LMIC</code>, en <code>LoRa</code>.</li>
+      <li>Kloon of download de repository van GitHub:</li>
+      <li>
+        <a href="https://github.com/kizniche/ttgo-tbeam-ttn-tracker" target="_blank">ttgo-tbeam-ttn-tracker</a>
+      </li>
+      <li>Open het bestand <code>ttn-tracker.ino</code> en vul in <code>config.h</code> je TTN keys in (AppEUI, DevEUI, AppKey).</li>
+      <li>Compileer en upload de code naar je T-Beam.</li>
+      <li>Bekijk via de Serial Monitor of de tracker verbinding maakt en GPS-data verzendt.</li>
+    </ol>
+    <p class="fst-italic small">📚 Bron: kizniche – <a href="https://github.com/kizniche/ttgo-tbeam-ttn-tracker" target="_blank">ttgo-tbeam-ttn-tracker GitHub</a></p>
+  </section>
+
+  <section class="mb-5">
+    <h2>Wat ik geleerd heb</h2>
+    <p>
+      Dit project gaf mij inzicht in hoe GPS-modules samenwerken met LoRa-communicatie op ESP32-platforms. 
+      Ik leerde werken met externe libraries, het aanpassen van configuratiebestanden in code, 
+      en het opzetten van verbindingen met The Things Network.
+    </p>
+    <p>
+      Daarnaast heb ik ervaring opgedaan met het interpreteren van realtime data en het testen via de seriële interface.
+    </p>
+  </section>
+
+  <section class="mb-5">
+    <h2>Gebruikte technologieën en tools</h2>
+    <ul>
+      <li>ESP32 (TTGO T-Beam)</li>
+      <li>Arduino IDE</li>
+      <li>LoRa en LoRaWAN (TTN)</li>
+      <li>GPS via NEO-6M module</li>
+      <li>Libraries: TinyGPS++, LMIC, SPI</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2>Handige bronnen en tools</h2>
+    <ul>
+      <li><a href="https://github.com/kizniche/ttgo-tbeam-ttn-tracker" target="_blank">📁 GitHub repo – broncode en uitleg (door kizniche)</a></li>
+      <li><a href="https://www.thethingsnetwork.org/docs/" target="_blank">🌍 TTN Documentatie</a></li>
+      <li><a href="https://randomnerdtutorials.com/" target="_blank">📚 Random Nerd Tutorials – veel projecten rond ESP32</a></li>
+      <li><a href="https://www.arduino.cc/en/software" target="_blank">💻 Arduino IDE – software download</a></li>
+    </ul>
+  </section>
+
+  <a href="portfolio.html" class="btn btn-outline-primary mt-4">← Terug naar portfolio</a>
+  <footer class="container-fluid bg-light text-center h6 small p-4">
+    &copy; Henok Metal Art <span id="year"></span>
+  </footer>
 </body>
 </html>

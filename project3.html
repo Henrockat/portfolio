@@ -3,169 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motorsturing met I2C-LCD Simulatie - Portfolio</title>
+  <title>DC-motorsturing met H-brug - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="assets/js/jaartal.js" defer></script>
 </head>
-<body class="container py-4">
 
+<body class="container py-4">
   <a href="portfolio.html" class="btn btn-outline-secondary mb-4">&larr; Terug naar portfolio</a>
 
-  <h1 class="mb-3">Motorsturing met I2C-LCD Simulatie</h1>
-  <p class="lead">In dit project wordt een simulatie van een gemotoriseerd wagentje weergegeven, met een I2C LCD-display voor feedback en knoppen voor richtingsbediening.</p>
+  <h1 class="mb-3">DC-motorsturing met H-brug</h1>
+  <p class="lead">
+    In dit project leer je hoe je twee DC-motoren kan aansturen met een Arduino Nano via een L9110 H-brug module. 
+    De snelheid wordt bepaald via een potentiometer, en de richting via drukknoppen. In de Wokwi-simulatie worden LEDs gebruikt 
+    om de werking van de motoren visueel voor te stellen.
+  </p>
 
   <hr class="my-4">
 
   <div class="row g-4 align-items-start mb-5">
-
     <div class="col-lg-6">
       <h2>Mogelijkheid tot simulatie</h2>
-      <p>Hoewel sommige componenten zoals de L9110 H-brug module niet beschikbaar zijn in <a href="https://wokwi.com/" target="_blank" rel="noopener noreferrer">Wokwi</a>, kan je een deel van deze opstelling wel simuleren. Dit is ideaal om je code te testen of inzicht te krijgen in het gedrag van microcontrollers en schakelingen.</p>
+      <p>
+        In Wokwi werd deze opstelling gesimuleerd met LEDs i.p.v. DC-motoren. De LED-kleur en -intensiteit visualiseren richting en snelheid. 
+        Handig als je geen fysieke H-brug of motoren beschikbaar hebt.
+      </p>
 
       <h2>Benodigde hardware</h2>
       <ul>
         <li>1x Arduino Nano</li>
-        <li>1x L9110 H-Brug module</li>
-        <li>2x DC motoren</li>
-        <li>1x I2C LCD-display</li>
+        <li>1x L9110 H-brug module</li>
+        <li>2x DC-motoren</li>
+        <li>2x Drukknop</li>
         <li>1x Potentiometer</li>
-        <li>4x drukknoppen</li>
-        <li>Weerstanden (220Ω)</li>
-        <li>Jumpers en breadboard</li>
+        <li>1x I2C LCD-scherm</li>
+        <li>Breadboard en jumper wires</li>
+        <li>USB-kabel</li>
       </ul>
 
       <h2>Stappenplan / Tutorial</h2>
       <ol>
-        <li>Sluit de motoren aan op de L9110-module.</li>
-        <li>Verbind de H-brug met de juiste digitale pinnen van de Arduino Nano.</li>
-        <li>Koppel de I2C LCD aan SDA/SCL (A4/A5).</li>
-        <li>Verbind de drukknoppen voor richtingbesturing en snelheid met het breadboard.</li>
-        <li>Gebruik de potentiometer om snelheidsregeling mogelijk te maken.</li>
-        <li>Upload de code via de Arduino IDE en test de functies van de robot.</li>
+        <li>Sluit de motoren aan op de H-brugmodule en verbind deze met de PWM-uitgangen van de Arduino.</li>
+        <li>Gebruik <code>analogRead()</code> om de stand van de potentiometer uit te lezen.</li>
+        <li>Gebruik <code>map()</code> om deze waarde om te zetten naar een duty-cycle voor PWM.</li>
+        <li>Stuur via <code>analogWrite()</code> de snelheid van de motoren aan.</li>
+        <li>Gebruik drukknoppen om de richting te veranderen en geef de status weer op een I2C LCD.</li>
       </ol>
+      Zit je vast of heb je vragen? 
+      Stuur me gerust een <a href="contact.html#contact-form" class="fw-semibold link-underline link-underline-opacity-25 link-underline-opacity-75-hover text-danger-emphasis">
+      bericht.
+    </a>
+
+      <p>Bekijk hier de code en simulatie:</p>
+      <a href="https://github.com/AP-Grad-IoT/motorsturing-met-wagentjes-space-odyssey" target="_blank" class="btn btn-secondary mb-2">
+        🌐 Wokwi Simulatie (met LEDs)
+      </a><br>
+      <a href="https://github.com/AP-Grad-IoT/uitbreiding-dc-motorsturing-met-i2c-lcd-space-odyssey" target="_blank" class="btn btn-dark">
+        🔧 Echte opstelling met DC-motoren en LCD
+      </a>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 illustration-block">
       <h2>Schematische weergave</h2>
-      <img src="assets/images-labo/DC motorstuing met LCD.PNG" alt="Schema Motorsturing LCD" class="img-fluid rounded">
+      <img src="assets/images-labo/DC motorstuing met LCD.PNG" alt="Schema motorsturing" class="img-fluid rounded project-illustration">
     </div>
-
   </div>
 
-  <h2>Arduino Code</h2>
-  <pre><code>
-    #include <Arduino.h>
-    #include <LiquidCrystal_I2C.h> // bibliotheek voor I2C
-    LiquidCrystal_I2C lcd(0x27, 16, 2);  //I2C adres 0x27 (bij onze LCDs is dit 0x20), 16 kolommen en 2 rijen
+  <hr class="my-5">
 
-    const int speedpot_pin = A0;  // aangeven analog input van pot voor snelhied motoren
+  <section class="mb-5">
+    <h2>Doel van het project</h2>
+    <p>
+      In dit project leer je hoe je op een gecontroleerde manier analoge input (zoals een potentiometer) gebruikt 
+      om een PWM-signaal aan te sturen. Daarnaast pas je interrupt-achtige logica toe om richtingswijzigingen via knoppen door te voeren. 
+      Via digitale leerboeken werk je stap voor stap en test je zowel in simulatie (Wokwi) als in een echte fysieke opstelling met motoren.
+    </p>
+    <p>
+      Door gebruik te maken van PWM leer je hoe je het gemiddelde spanningsniveau beïnvloedt met <code>analogWrite()</code>. 
+      De waarde van <code>analogRead()</code> wordt met <code>map()</code> omgezet naar een bruikbare duty-cycle tussen 0 en 255.
+    </p>
+  </section>
 
-    const int CC_CC_button = 3;
-    const int C_C_button = 4;
-    const int CC_C_button = 5;      //aangeven  drukknop naar links 
-    const int C_CC_button = 6;      // aangeven drukknop naar rechts 
+  <section class="mb-5">
+    <h2>Gebruikte technologieën en tools</h2>
+    <ul>
+      <li>Arduino Nano (~D9 PWM-uitgang)</li>
+      <li>L9110 H-brug module voor motorsturing</li>
+      <li>DC-motoren en LEDs (voor simulatie)</li>
+      <li>analogRead() en analogWrite()</li>
+      <li>map()-functie voor spanningsschaling</li>
+      <li>I2C LCD (tekstoutput)</li>
+      <li>Arduino IDE en Visual Studio Code met PlatformIO</li>
+    </ul>
+  </section>
 
+  <section class="mb-5">
+    <h2>Wat ik geleerd heb</h2>
+    <p>
+      Dankzij dit project begrijp ik nu hoe een analoge input zoals een potentiometer uitgelezen wordt met <code>analogRead()</code>, 
+      en hoe deze waarde vertaald wordt naar een PWM-signaal via <code>analogWrite()</code> om de snelheid van een motor aan te passen.
+    </p>
+    <p>
+      Ik ontdekte hoe een L9110 H-brug werkt en hoe je via digitale pinnen de draairichting van een DC-motor bepaalt. 
+      Door te werken met zowel simulatie als echte hardware werd ik geconfronteerd met praktische aandachtspunten, zoals voedingsproblemen en correcte aansluiting.
+    </p>
+    <p>
+      Ook heb ik geoefend met het gebruik van een I2C LCD en de functie <code>lcd.print()</code> om informatie realtime zichtbaar te maken. 
+      De combinatie van theorie, simulatie en praktijk heeft mijn begrip van PWM, ADC en motorsturing enorm versterkt.
+    </p>
+  </section>
 
-    const int PWM_M1 = 10;        // aageven richting en snelheid regeling pinne voor M1 en M2
-    const int Dir_M1 = 12;
-    const int PMW_M2 = 11;
-    const int Dir_M2 = 9;
+  <section class="mb-5">
+    <h2>Handige bronnen en tools</h2>
+    <ul>
+      <li><a href="https://github.com/AP-Grad-IoT/motorsturing-met-wagentjes-space-odyssey" target="_blank">🌐 GitHub – Wokwi Simulatie (met LEDs)</a></li>
+      <li><a href="https://github.com/AP-Grad-IoT/uitbreiding-dc-motorsturing-met-i2c-lcd-space-odyssey" target="_blank">🔧 GitHub – Echte opstelling met DC-motoren en LCD</a></li>
+      <li><a href="https://docs.arduino.cc/hardware/nano/" target="_blank">📌 Arduino Nano documentatie</a></li>
+      <li><a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE" target="_blank">💻 Arduino IDE installatie</a></li>
+      <li><a href="https://code.visualstudio.com/download" target="_blank">🛠️ Visual Studio Code – code editor</a></li>
+      <li><a href="https://platformio.org/install/ide?install=vscode" target="_blank">🔌 PlatformIO extensie – Arduino in VS Code</a></li>
+      <li><a href="https://wokwi.com/" target="_blank">🧪 Wokwi Simulator – online testen van je sketch</a></li>
+    </ul>
+  </section>
 
-    int pot_waarde = 0;       // ingelezen analog waarde pot.
-    int duty_waarde = 0;      // snelheid waarde afgeleid van aanalog potwaarde (PWM)
-    int speed = 0;            // waarde om snelheid motor naar 0% bij het loslasen van drukknoppen.
-
-
-    void setup()
-    { lcd.init(); // initialiseer de LCD
-      lcd.backlight();
-      
-      pinMode(PWM_M1,OUTPUT);     //snelheid regeling pin motor1 PWM signal
-      pinMode(PMW_M2, OUTPUT);    //snelheid regeling pin motor1 PWM signal
-      pinMode(Dir_M1,OUTPUT);     //richting pin voor motor1 H-brug 
-      pinMode(Dir_M2, OUTPUT);    //richting pin voor motor2 H-brug
-
-      pinMode(CC_CC_button,INPUT);     // rij vooruit
-      pinMode(C_C_button,INPUT);        //rij achteruit
-      pinMode(CC_C_button, INPUT);      //draai rechts
-      pinMode(C_CC_button, INPUT);      // draai links
-
-      pinMode(speedpot_pin, INPUT); //potentiometer aan de juiste pin aansluiten 
-      Serial.begin(9600);
-
-    }
-
-    void loop() {
-      Serial.println(digitalRead(CC_CC_button));
-      Serial.println(digitalRead(C_C_button));
-      Serial.println(digitalRead(CC_C_button));
-      Serial.println(digitalRead(C_CC_button));
-      //inlezen van analogwaarde van pot.
-      speed = analogRead(speedpot_pin);
-      Serial.print("pot_waarde= ");
-      Serial.println(speed);
-
-      //omzetting van ingelezen analogwaarde waarde naar PWM signal
-      // de duty_waarde moet een waarde hebben tussen 0 en 255 (tussen 0% en 100%)
-      duty_waarde = map(speed, 0, 1023, 0, 255);
-      Serial.print("duty_waarde= ");
-      Serial.println(duty_waarde);
-      
-      delay(500);
-
-      if (digitalRead(CC_CC_button) ==HIGH) {
-        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
-        lcd.print("Rij Vooruit");  // print bericht vanaf (0, 0)
-        //rij vooruit
-      digitalWrite(Dir_M1,LOW);
-      digitalWrite(Dir_M2,LOW);
-        //snelheid instellen aan de hand van de duty waarde
-      analogWrite(PWM_M1,duty_waarde);
-      analogWrite(PMW_M2,duty_waarde);
-
-      }
-      else if (digitalRead(C_C_button) == HIGH) {
-        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
-        lcd.print("Rij Achteruit");  // print bericht vanaf (0, 0)
-      //Rij achteruit
-      digitalWrite(Dir_M1,HIGH);
-      digitalWrite(Dir_M2,HIGH);
-        //snelheid instellen aan de hand van de duty waarde 
-        analogWrite(PWM_M1,duty_waarde);
-        analogWrite(PMW_M2,duty_waarde);
-
-      }
-      else if (digitalRead(CC_C_button) ==HIGH) {
-        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
-        lcd.print("Rechts draaien");  // print bericht vanaf (0, 0)
-        //naar rechts draaien
-      digitalWrite(Dir_M1,HIGH);
-      digitalWrite(Dir_M2, LOW);
-        //snelheid instellen aan de hand van de duty waarde
-      analogWrite(PWM_M1,duty_waarde);
-      analogWrite(PMW_M2,duty_waarde);
-      }
-      else if (digitalRead(C_CC_button) == HIGH) {
-        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
-        lcd.print("Links draaien");  // print bericht vanaf (0, 0)
-      //naar links draaien
-        digitalWrite(Dir_M1,LOW);
-        digitalWrite(Dir_M2, HIGH);
-        //snelheid instellen aan de hand van de duty waarde
-        analogWrite(PWM_M1,duty_waarde);
-        analogWrite(PMW_M2,duty_waarde);
-
-      }
-      else {
-        speed= 0;
-        lcd.setCursor(0,0); // plaats cursor in positie (0, 0)
-        lcd.print("     STOP      ");  // print bericht vanaf (0, 0)
-        analogWrite(PWM_M1, speed);
-        analogWrite(PMW_M2, speed);
-      }
-      
-    }
-  </code></pre>
-
+  <a href="portfolio.html" class="btn btn-outline-primary mt-4">← Terug naar portfolio</a>
+  <footer class="container-fluid bg-light text-center h6 small p-4">
+    &copy; Henok Metal Art <span id="year"></span>
+  </footer>
 </body>
 </html>

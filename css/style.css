@@ -176,6 +176,21 @@ button {
   color: #ff4f1b;
 }
 
+.project-illustration {
+  max-width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.illustration-block {
+  text-align: center;
+}
+
+.illustration-block h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
 
 #lightboxModal .btn {
   background-color: rgba(0, 0, 0, 0.4); /* transparante zwarte achtergrond */
