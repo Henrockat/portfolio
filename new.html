@@ -68,11 +68,11 @@
           <p class="contact-description">Vul het formulier hieronder in en ik neem zo snel mogelijk contact met je op.</p>
 
           
-          <div id="thank-you-message" class="alert alert-success d-none mt-3">
+          <div id="thank-you-message" class="alert alert-success d-none">
             Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.
           </div>
 
-          <form id="contact-form" name="contact" method="POST" data-netlify="true">
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" action="contact.html?success=true">
             <input type="hidden" name="form-name" value="contact">
             <fieldset class="form-group-container">
               <label class="form-group">
@@ -118,6 +118,5 @@
   <footer class="container-fluid bg-light text-center h6 small p-4">
     &copy; Henok Metal Art <span id="year"></span>
   </footer>
-  <script src="assets/js/form-success.js" defer></script>
 </body>
 </html>
