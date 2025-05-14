@@ -1,19 +1,23 @@
-form.addEventListener("submit", () => sessionStorage.setItem("form-submitted", "true"));
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contact-form");
   const thankYou = document.getElementById("thank-you-message");
 
-  // Als formulier net werd verzonden, toon bedankbericht
-  if (sessionStorage.getItem("form-submitted") === "true") {
-    if (form) form.classList.add("d-none");
-    if (thankYou) thankYou.classList.remove("d-none");
-    sessionStorage.removeItem("form-submitted");
-  }
+  if (!form) return;
 
-  // Als gebruiker op "verzend" klikt, sla op in sessionStorage
-  if (form) {
-    form.addEventListener("submit", function () {
-      sessionStorage.setItem("form-submitted", "true");
-    });
-  }
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // 
+    const formData = new FormData(form);
+
+    
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      form.classList.add("d-none");
+      thankYou.classList.remove("d-none");
+    })
+    .catch((error) => alert("Fout bij verzenden. Probeer opnieuw."));
+  });
 });
