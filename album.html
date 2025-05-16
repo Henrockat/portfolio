@@ -18,9 +18,9 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
 
-  <script src="assets/js/search.js" defer></script>
-  <script src="assets/js/album-jump.js" defer></script>
-  <script src="assets/js/jaartal.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/album-jump.js" defer></script>
+  <script src="js/jaartal.js" defer></script>
 
 
   
@@ -34,7 +34,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <nav class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
             <a class="nav-link  fs-5"  href="index.html">Home</a>
@@ -53,7 +53,7 @@
           <input class="form-control me-2" type="search" placeholder="zoeken" aria-label="Search">
           <button class="btn btn-sm btn-outline-secondary" type="button" onclick="event.preventDefault(); searchFunction();">zoeken</button>
         </form>
-      </div>
+      </nav>
     </nav>
     <main class="container mt-5">
       <h1 class="mb-4 text-center">Scrap Metal Art Galerij</h1><br>
@@ -167,25 +167,26 @@
       
 
       <div class="social-icons d-flex justify-content-center gap-3 mt-3">
-        <a href="https://www.facebook.com" target="_blank" class="text-dark">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-dark">
           <i class="bi bi-facebook fs-4"></i>
         </a>
-        <a href="https://www.instagram.com" target="_blank" class="text-dark">
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-dark">
           <i class="bi bi-instagram fs-4"></i>
         </a>
-        <a href="https://www.youtube.com" target="_blank" class="text-dark">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="text-dark">
           <i class="bi bi-youtube fs-4"></i>
         </a>
-        <a href="https://twitter.com" target="_blank" class="text-dark">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-dark">
           <i class="bi bi-twitter fs-4"></i>
         </a>
       </div>
+
     </aside>
 
 
     <footer class="container-fluid bg-light text-center h6 small p-4">&copy; Henok Metal Art <span id="year"></span> </footer>
-    <script src="assets/js/search.js" defer></script>
-    <script src="assets/js/album-jump.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script src="js/album-jump.js" defer></script>
     
 
   </body>
