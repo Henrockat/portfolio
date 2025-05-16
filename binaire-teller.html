@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LED Binary Op En Neer Teller - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="assets/js/jaartal.js" defer></script>
+</head>
+
+<body class="container py-4">
+  <a href="portfolio.html" class="btn btn-outline-secondary mb-4">&larr; Terug naar portfolio</a>
+
+  <h1 class="mb-3">LED Binary Op En Neer Teller met Raspberry Pi Pico</h1>
+  <p class="lead">Deze teller toont een binaire waarde via LED's en laat toe om op en neer te tellen met twee knoppen. Een potentiometer regelt de helderheid van de LED's.</p>
+
+  <hr class="my-4">
+
+  <div class="row g-4 align-items-start mb-5">
+    <div class="col-lg-6">
+      <h2>Mogelijkheid tot simulatie</h2>
+        <p>
+          Je kunt deze schakeling virtueel testen op 
+          <a href="https://wokwi.com/" target="_blank" class="text-decoration-underline">Wokwi.com</a>. 
+          Wokwi ondersteunt nu ook de Raspberry Pi Pico met MicroPython, wat ideaal is om je code veilig te testen zonder hardware. 
+          Je kunt componenten zoals LED’s, knoppen en potentiometers eenvoudig slepen en verbinden in een interactieve simulatieomgeving.
+        </p>
+
+
+      <h2>Benodigde hardware</h2>
+      <ul>
+        <li>1x Raspberry Pi Pico W</li>
+        <li>6x LED (kleur naar keuze)</li>
+        <li>6x Weerstanden (220Ω)</li>
+        <li>2x Drukknoppen</li>
+        <li>1x Potentiometer</li>
+        <li>Breadboard</li>
+        <li>Jumper wires</li>
+        <li>Micro USB-kabel</li>
+      </ul>
+
+      <h2>Stappenplan / Tutorial</h2>
+      <ol>
+        <li>Verbind de LED's via weerstanden met GPIO-pinnen op de Pico.</li>
+        <li>Sluit de potentiometer aan op een analoge ingang (vb. GP26).</li>
+        <li>Verbind de drukknoppen met twee digitale GPIO-pinnen (GP8 en GP9).</li>
+        <li>Upload de MicroPython-code met behulp van Thonny of via VS Code met de Pico extensie.</li>
+        <li>Bekijk hoe de binaire teller reageert op input en helderheid aanpast via de potmeter.</li>
+      </ol>
+
+      Zit je vast of heb je vragen? 
+      Stuur me gerust een <a href="contact.html#contact-form" class="fw-semibold link-underline link-underline-opacity-25 link-underline-opacity-75-hover text-danger-emphasis">bericht.</a>
+
+      <p class="mt-3">
+        De volledige projectcode is beschikbaar op GitHub:
+      </p>
+      <a href="https://github.com/Henrockat/Eind_ProjectAPGIoTboard" target="_blank" class="btn btn-dark">
+        Naar GitHub Repository
+      </a>
+    </div>
+    
+    <div class="col-lg-6 illustration-block">
+      <h2>Schematische weergave</h2>
+      <img src="assets/images-labo/LED Binary op en neer teller.PNG" alt="Schema LED Teller" class="img-fluid rounded project-illustration">
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <section class="mb-5">
+    <h2>Doel van het project</h2>
+    <p>
+      In dit project leer je basisconcepten van programmeren toepassen op een microcontroller: inputs, outputs, waardeverwerking en logica. 
+      Je leert werken met binaire getallen, PWM voor helderheid en knoppen als gebruikersinvoer.
+    </p>
+  </section>
+
+  <section class="mb-5">
+    <h2>Gebruikte technologieën en tools</h2>
+    <ul>
+      <li>Raspberry Pi Pico W</li>
+      <li>MicroPython (Thonny editor)</li>
+      <li>GPIO-poorten (INPUT, OUTPUT en PWM)</li>
+      <li>Visual Studio Code + Pico extensie</li>
+      <li>Analoge input via ADC (potentiometer)</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2>Wat ik geleerd heb</h2>
+    <p>
+      Door deze opdracht kreeg ik inzicht in hoe GPIO-pinnen functioneren binnen de Raspberry Pi Pico. 
+      Ik oefende het schrijven van functies in MicroPython, werkte met lussen en maakte gebruik van analoge input en PWM. 
+      Ook heb ik geleerd hoe je een waarde omzet naar binair en deze visualiseert met LED’s.
+    </p>
+    <p>
+      De combinatie van hardware en software gaf mij veel inzicht in embedded systemen en low-level programmeren. 
+      Het gebruik van Visual Studio Code met de Pico extensie hielp bij het organiseren van mijn code en projecten.
+    </p>
+  </section>
+
+  <section class="mb-5">
+    <h2>Handige bronnen en tools</h2>
+    <p>
+      Onderstaande links kunnen je helpen om met Raspberry Pi Pico aan de slag te gaan:
+    </p>
+    <ul>
+      <li><a href="https://www.raspberrypi.com/documentation/microcontrollers/" target="_blank">📌 Raspberry Pi Pico documentatie</a></li>
+      <li><a href="https://www.raspberrypi.com/news/get-started-with-raspberry-pi-pico-series-and-vs-code/" target="_blank">💻 VS Code & Pico installatiegids</a></li>
+      <li><a href="https://thonny.org/" target="_blank">🧪 Thonny IDE – eenvoudige editor voor MicroPython</a></li>
+      <li><a href="https://code.visualstudio.com/download" target="_blank">🛠️ Visual Studio Code – editor voor geavanceerd werken</a></li>
+      <li><a href="https://wokwi.com/" target="_blank">🌐 Wokwi simulator – handig voor testopstellingen</a></li>
+    </ul>
+  </section>
+
+  <a href="portfolio.html" class="btn btn-outline-primary mt-4">← Terug naar portfolio</a>
+  <footer class="container-fluid bg-light text-center h6 small p-4">
+    &copy; Henok Metal Art <span id="year"></span>
+  </footer>
+</body>
+</html>
