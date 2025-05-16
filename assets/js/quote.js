@@ -1,7 +1,8 @@
-fetch('https://api.quotable.io/random?tags=technology|science')
+fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://zenquotes.io/api/random'))
   .then(res => res.json())
   .then(data => {
-    document.getElementById('quote').innerText = `"${data.content}" — ${data.author}`;
+    const parsed = JSON.parse(data.contents);
+    document.getElementById('quote').innerText = `"${parsed[0].q}" — ${parsed[0].a}`;
   })
   .catch(() => {
     document.getElementById('quote').innerText = 'Kon geen quote laden.';
